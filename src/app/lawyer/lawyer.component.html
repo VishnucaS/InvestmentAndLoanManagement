@@ -1,0 +1,289 @@
+<div class="bgy"></div>
+
+
+<br><br><br>
+
+<div class="row">
+    <div class="col-sm-3"></div>
+
+    <div class="col-sm-6 text-center">
+        <div class="divform"><h1>Welcome to Manage Lawyers Service</h1></div>
+    </div>
+
+  </div>
+
+  <br><br>
+
+
+
+
+
+  
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-left">
+        <div class="divform">
+<h3>Your Details,</h3>
+
+<p>ID:{{luser.id}}</p>
+<p>Name:{{luser.name}}</p>
+
+
+
+        </div></div></div>
+        
+        <br><br>
+
+        <div align="center">
+          <div *ngIf="authority === 'admin'">  <button class="mybutton"  (click)=showaPopup()>Register New Lawyer </button></div>
+          <button class="mybutton"  (click)=showbPopup()>View Lawyers</button>
+          <button class="mybutton"  (click)=showcPopup()>Find Lawyer By Town</button>
+
+        
+          
+            </div>
+        <br><br>
+
+
+
+
+
+<div *ngIf="showa" class="modal-back">
+
+
+            <div class="modal-content">
+                <div class="modal-header"><h4>To Register lawyer</h4></div>
+                <div class="modal-body" >
+                    
+                    <div *ngIf="isSignedUp; else signupForm">
+                        Lawyer Registered successfully.
+                      </div>
+                      
+                      <ng-template #signupForm>
+                      
+                          <div class="row">
+                              <div class="col-sm-5">
+                                <h2>Please Fill this to add lawyer,</h2>
+                                <br>
+                      
+                                
+                          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                            <p>Id: {{luser.id}}</p>
+
+                            <p>Admin Name: {{luser.name}}</p>
+                      
+                            <div class="form-group">
+                              <label for="name">Name: </label>
+                              <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+                              <div *ngIf="f.submitted && name.invalid">
+                                <div *ngIf="name.errors.required">Name is required</div>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="contactnum">Contact Number: </label>
+                              <input type="text" class="form-control" name="contactnum" [(ngModel)]="form.contactnum"  #contactnum="ngModel"
+                                required />
+                              <div *ngIf="f.submitted && contactnum.invalid">
+                                <div *ngIf="contactnum.errors.required">Contactnum is required</div>
+                              </div>
+                            </div>
+
+
+                            <div class="form-group">
+                              <label for="email">Email: </label>
+                              <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+                              <div *ngIf="f.submitted && email.invalid">
+                                <div *ngIf="email.errors.required">Email is required</div>
+                                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="address">Address: </label>
+                              <input type="text" class="form-control" name="address" [(ngModel)]="form.address"  #address="ngModel"
+                                required />
+                              <div *ngIf="f.submitted && address.invalid">
+                                <div *ngIf="address.errors.required">Address is required</div>
+                              </div>
+                            </div>
+
+
+                            <div class="form-group">
+                              <label for="town">Town: </label>
+                              <input type="text" class="form-control" name="town" [(ngModel)]="form.town"  #town="ngModel"
+                                required />
+                              <div *ngIf="f.submitted && town.invalid">
+                                <div *ngIf="town.errors.required">Town is required</div>
+                              </div>
+                            </div>
+
+
+                            
+
+                        
+
+                            
+                            <div class="form-group">
+                              <button class="btn btn-primary">Register</button>
+                              <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                                Signup failed!<br/>{{errorMessage}}
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="col-sm-7"><img src="\assets\32.jpg" alt="Notebook" height="500" width="100%" ></div>
+                          </div>
+                          
+                      
+                         
+                      </ng-template>
+                      
+                </div>
+                <div class="modal-footer">      
+                  <button class="btn btn-secondary"  (click)=closeaPopup()>Close now </button>
+                </div>
+          
+          
+             
+             
+              </div>
+          
+          
+          
+          
+</div>
+          
+
+<div *ngIf="showb" class="modal-back">
+
+
+    <div class="modal-content">
+        <div class="modal-header"><h4>View Lawyers details</h4></div>
+        <div class="modal-body" align="center">
+          
+  
+              
+                <div  class="alert"    *ngFor="let lawyer of lawyers">
+                    <div class="row">
+                        <div class="col" align="left"> <p>ID: {{lawyer.id}}</p> </div>  
+                        <div class="col" align="left"> <p>Name: {{lawyer.name}}</p> </div>  
+                        <div class="col" align="left"> <p>Contact Number: {{lawyer.contactnum}}</p> </div>  
+                        <div class="col" align="left"> <p>Email: {{lawyer.email}}</p> </div>  
+                        <div class="col" align="left"> <p>Address: {{lawyer.address}}</p> </div>  
+                        <div class="col" align="left"> <p>Town: {{lawyer.town}}</p> </div>  
+                       
+                    </div>
+                  
+                   
+                   
+                </div>
+           
+           
+        </div>
+        <div class="modal-footer">      
+          <button class="btn btn-secondary"  (click)=closebPopup()>Close now </button>
+        </div>
+  
+  
+     
+     
+      </div>
+  
+  
+  
+  
+  </div>
+
+
+  <div *ngIf="showc" class="modal-back">
+
+
+    <div class="modal-content">
+        <div class="modal-header"><h4>View Lawyers details By Town</h4></div>
+        <div class="modal-body" align="left">
+          
+          <form name="form" (ngSubmit)="f.form.valid && onSubmitc()" #f="ngForm" novalidate>
+            
+
+
+                 <div class="form-group">
+                   <label for="town">Town: </label>
+                   <input type="text" class="form-control" name="town" [(ngModel)]="form.town"  #town="ngModel"
+                     required />
+                   <div *ngIf="f.submitted && town.invalid">
+                     <div *ngIf="town.errors.required">Town is required</div>
+                   </div>
+                 </div>
+
+
+                 
+
+             
+
+           
+                 <div class="form-group">
+                   <button class="btn btn-primary">Search</button>
+                   
+                 </div>
+               </form>
+
+              <p>Town : {{form.town}} </p>
+                
+           
+        </div>
+        <div class="modal-footer">      
+          <button class="btn btn-secondary"  (click)=closecPopup()>Close now </button>
+        </div>
+  
+  
+     
+     
+      </div>
+  
+  
+  
+  
+  </div>
+
+
+  <div *ngIf="showd" class="modal-back">
+
+
+    <div class="modal-content">
+        <div class="modal-header"><h4>View Lawyers details</h4></div>
+        <div class="modal-body" align="center">
+          
+  
+              
+                <div  class="alert"    *ngFor="let lawyera of lawyeras">
+                    <div class="row">
+                        <div class="col" align="left"> <p>ID: {{lawyera.id}}</p> </div>  
+                        <div class="col" align="left"> <p>Name: {{lawyera.name}}</p> </div>  
+                        <div class="col" align="left"> <p>Contact Number: {{lawyera.contactnum}}</p> </div>  
+                        <div class="col" align="left"> <p>Email: {{lawyera.email}}</p> </div>  
+                        <div class="col" align="left"> <p>Address: {{lawyera.address}}</p> </div>  
+                        <div class="col" align="left"> <p>Town: {{lawyera.town}}</p> </div>  
+                       
+                    </div>
+                  
+                   
+                   
+                </div>
+           
+           
+        </div>
+        <div class="modal-footer">      
+          <button class="btn btn-secondary"  (click)=closedPopup()>Close now </button>
+        </div>
+  
+  
+     
+     
+      </div>
+  
+  
+  
+  
+  </div>

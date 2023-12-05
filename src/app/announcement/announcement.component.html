@@ -1,0 +1,156 @@
+<div class="bgy"></div>
+
+<br><br><br>
+<div *ngIf="authority ==='admin'">
+
+
+<div *ngIf="show" class="modal-back">
+
+
+  
+
+  <div class="modal-content">
+    <div class="modal-header"><h4>Send New Announcement</h4></div>
+    <div class="modal-body" align="left">
+      
+
+<div *ngIf="isSignedUp; else signupForm">
+  Your Announcement send successfully.
+</div>
+
+<ng-template #signupForm>
+
+    <div class="row">
+        <div class="col">
+          <h2>Please Fill here To Send Announcements,</h2>
+          <br>
+
+          
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <p>Admin Id: {{luser.id}}</p>
+      <p>Admin Name: {{luser.name}}</p>
+      <p>Admin Username: {{luser.username}}</p>
+     
+      
+      <div class="form-group">
+        <label for="message">Message</label>
+        <input type="text" class="form-control" name="message" [(ngModel)]="form.message"  #message="ngModel"
+          required />
+        <div *ngIf="f.submitted && message.invalid">
+          <div *ngIf="message.errors.required">message is required</div>
+        </div>
+      </div>
+     
+      <div class="form-group">
+        <button class="btn btn-primary">Send</button>
+        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+          Signup failed!<br/>{{errorMessage}}
+        </div>
+      </div>
+    </form>
+  </div>
+    </div>
+    
+
+   
+</ng-template>
+
+       
+</div>
+<div class="modal-footer">      
+  <button class="btn btn-secondary"  (click)=closebPopup()>Close now </button>
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+<div align="center">
+  <button class="mybutton"  (click)=showPopup()>Send New Announcement </button>
+  <button class="mybutton"  (click)=showdPopup()>View Announcement</button>
+  
+  
+  </div>
+</div>
+
+<div *ngIf="showd" class="modal-back">
+ 
+  <div class="modal-content">
+    <div class="modal-header"><h4>View Announcement</h4></div>
+    <div class="modal-body" align="center">
+      
+
+          
+      <div  class="alert"    *ngFor="let announce of announces">
+        <div class="divform">
+        <div class="row ">
+            <div class="col" align="left"> <p>Announcement ID: {{announce.id}}</p> </div>  
+            <div class="col" align="left"> <p>Announcement From: {{announce.aname}}</p> </div> 
+            <div class="col" align="left"> <p>Date: {{announce.date}}</p> </div> 
+
+            <br> 
+          </div>
+            <div class="row">
+            <div class="col" align="left"> <p>Announcement Message: {{announce.message}}</p> </div>  
+          </div>
+        </div>
+       
+      </div> 
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closedPopup()>Close</button>
+    </div>
+
+
+ 
+ 
+  </div>
+
+
+</div>
+
+
+
+
+<div *ngIf="authority ==='user'">
+ 
+
+  <div class="modal-content">
+    <div class="modal-header"><h4>View Announcement</h4></div>
+    <div class="modal-body" align="center">
+      
+
+          
+      <div  class="alert"    *ngFor="let announce of announces">
+        <div class="divform">
+        <div class="row ">
+            <div class="col" align="left"> <p>Announcement ID: {{announce.id}}</p> </div>  
+            <div class="col" align="left"> <p>Announcement From: {{announce.aname}}</p> </div> 
+            <div class="col" align="left"> <p>Date: {{announce.date}}</p> </div> 
+
+            <br> 
+          </div>
+            <div class="row">
+            <div class="col" align="left"> <p>Announcement Message: {{announce.message}}</p> </div>  
+          </div>
+        </div>
+       
+      </div> 
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closebPopup()>Refresh</button>
+    </div>
+
+
+ 
+ 
+  </div>
+
+
+</div>
+
+

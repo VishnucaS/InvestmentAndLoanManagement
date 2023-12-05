@@ -1,0 +1,170 @@
+<div class="bgy"></div>
+<br>
+<div align="center"><button class="mybutton"  (click)=showcPopup()>Find User By Username</button></div>
+
+
+<div *ngIf="showc" class="modal-back">
+
+
+  <div class="modal-content">
+      <div class="modal-header"><h4>View User details By Username</h4></div>
+      <div class="modal-body" align="left">
+        
+        <form name="form" (ngSubmit)="f.form.valid && onSubmitc()" #f="ngForm" novalidate>
+          
+
+
+          <div class="form-group">
+            <label for="username">Username: </label>
+            <select class="form-control" class="form-control" name="username" [(ngModel)]="form.username" #name="ngModel" required >
+              <option *ngFor="let cus of cuss">{{cus.username}}</option>
+            </select>
+            <div *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors.required">Username is required</div>
+            </div>
+          </div>
+
+
+          
+
+               
+
+           
+
+         
+               <div class="form-group">
+                 <button class="btn btn-primary">Search</button>
+                 
+               </div>
+             </form>
+
+            <p>Username : {{form.username}} </p>
+              
+         
+      </div>
+      <div class="modal-footer">      
+        <button class="btn btn-secondary"  (click)=closecPopup()>Close now </button>
+      </div>
+
+
+   
+   
+    </div>
+
+
+
+
+</div>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+   
+    <div class="col-sm-10 text-center">
+        <div class="divform">
+            <div class="row">
+                <div class="col-sm-1 text-center"></div>
+                <div class="col-sm-10 text-left">  
+                  <br>
+                  <h1 align="left">User Profile</h1>
+                  <br></div>
+            </div>      
+        <div class="row">
+            <div class="col-sm-1 text-center"></div>
+        
+        
+            <div class="col-sm-10 text-left">
+              <h5>User ID : {{luser.id}}</h5>
+              <h5>Name : {{luser.name}}</h5>
+              <h5>User Name : {{luser.username}}</h5> 
+              <h5>Address : {{luser.address}}</h5> 
+              <h5>NIC : {{luser.nic}}</h5>
+              <h5>Profession : {{luser.profession}}</h5>
+              <h5>Phone Number : {{luser.mobilenum}}</h5> 
+              <h5>Email Address : {{luser.email}}</h5>  
+ 
+               
+            </div>
+             
+          </div>
+            
+
+       
+        <div class="row">
+            <div class="col-sm-1 text-center"></div>
+            <div class="col-sm-10 text-left">  
+                <br></div>
+        </div> 
+        <br>
+    </div>
+  </div>
+</div>
+<br> 
+<div class="row">
+      
+       
+        <div class="col-sm-3 text-left ">
+                <div class="divform">
+                       <div class="row"> 
+                               <div class="col-sm-1"></div>
+                               <div class="col-sm-10">
+                                       <h4>Loan Provider Details,</h4>
+                                       <h6>ID : {{puser.id}}</h6> 
+                                       <h6>Visible Name : {{puser.name}}</h6> 
+                                       
+                                      
+                               </div>
+   
+                   </div></div></div>
+
+
+   
+                <div class="col-sm-3 text-left ">
+                        <div class="divform">
+                               <div class="row"> 
+                                       <div class="col-sm-1"></div>
+                                       <div class="col-sm-10">
+                                               <h4>Loan Receiver Details,</h4>
+                                               <h6>ID : {{suser.id}}</h6> 
+                                               <h6>Visible Name  : {{suser.name}}</h6> 
+                                               
+                                       </div>
+           
+                           </div></div></div>
+
+       
+      
+                           <div class="col-sm-3 text-left ">
+                                <div class="divform">
+                                       <div class="row"> 
+                                               <div class="col-sm-1"></div>
+                                               <div class="col-sm-10">
+                                                       <h4>Invester Details,</h4>
+                                                       <h6>ID : {{iguser.id}}</h6> 
+                                                       <h6>Visible Name  : {{iguser.name}}</h6> 
+                                                       
+                                                       
+                                                      
+                                               </div>
+                   
+                                   </div></div></div>
+
+
+                                      
+        <div class="col-sm-3 text-left ">
+                <div class="divform">
+                       <div class="row"> 
+                               <div class="col-sm-1"></div>
+                               <div class="col-sm-10">
+                                       <h4>Investee Details,</h4>
+                                       <h6>ID : {{iruser.id}}</h6> 
+                                       <h6>Visible Name  : {{iruser.name}}</h6> 
+                                        
+                               </div>
+   
+                   </div></div></div>
+   
+   
+    </div>
+    
+<br><br> 
+

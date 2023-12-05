@@ -1,0 +1,74 @@
+<div class="bgy"></div>
+
+<div *ngIf="isLoggedIn; else loggedOut" routerLink="home">
+  <app-home></app-home>
+</div>
+
+
+
+<ng-template #loggedOut>
+
+    <div *ngIf="showw">
+        <app-register></app-register>
+      </div>   
+
+
+   <div *ngIf="!showw">
+    <br><br><br><br><br>
+
+    <div class="row" >
+    <div class="col-sm-4" ></div>
+
+    <div class="col-sm-4" >
+        <div class="divform">
+    <div class="row" >
+        <div class="col-sm-2" ></div>
+        <div class="col-sm-8" >
+      
+      <h2>Please login here,</h2>
+      
+
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+          required />
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+          required minlength="6" />
+        <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Login</button>
+        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+          Login failed: {{errorMessage}}
+          Login failed: {{errorMessagea}}
+          Login failed: {{data}}
+
+
+        </div>
+      </div>
+    </form>
+    <hr />
+    <p>Don't have an account?</p>
+
+    <button class="btn btn-success" (click)=showwPopup()>Sign Up</button>
+
+    </div>
+  </div>
+
+</div></div>
+  </div>
+
+</div>
+
+</ng-template>

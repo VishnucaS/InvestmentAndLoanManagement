@@ -1,0 +1,71 @@
+<div *ngIf="isSignedUp; else signupForm">
+  Your registration as loan Provider is successful.
+</div>
+
+<ng-template #signupForm>
+
+    <div class="row">
+        <div class="col-sm-5">
+          <h2>Please Register here for provide loan,</h2>
+          <br>
+
+          
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <p>Id: {{luser.id}}</p>
+      <p>Name: {{luser.name}}</p>
+
+      <div class="form-group">
+        <label for="name">Visible  Name:</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+        <div *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.required">At least Your Real Name is required</div>
+        </div>
+      </div>
+      
+  
+      <div class="form-group">
+        <label for="minage">Minimum Age Requirement</label>
+        <input type="text" class="form-control" name="minage" [(ngModel)]="form.minage" #minage="ngModel" required minage />
+        <div *ngIf="f.submitted && minage.invalid">
+          <div *ngIf="minage.errors.required">Minage is required</div>
+          <div *ngIf="minage.errors.minage">Minimum agemust be a valid age</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="minsalary">Minimum Salary Requirement:</label>
+        <input type="text" class="form-control" name="minsalary" [(ngModel)]="form.minsalary" #minsalary="ngModel" required minsalary />
+        <div *ngIf="f.submitted && minsalary.invalid">
+          <div *ngIf="minsalary.errors.required">Minsalary is required</div>
+          <div *ngIf="minsalary.errors.minsalary">Minsalary must be a valid salary </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="about">About:</label>
+        <input type="text" class="form-control" name="about" [(ngModel)]="form.about" #about="ngModel" required about />
+        <div *ngIf="f.submitted && about.invalid">
+          <div *ngIf="about.errors.required">About is required</div>
+          <div *ngIf="about.errors.about">About must be a valid text</div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <button class="btn btn-primary">Register</button>
+        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+          Signup failed!<br/>{{errorMessage}}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-7"><img src="\assets\32.jpg" alt="Notebook" height="500" width="100%" ></div>
+    </div>
+    
+
+   
+</ng-template>
+
+

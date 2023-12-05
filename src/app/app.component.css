@@ -1,0 +1,38 @@
+div.heading {
+  margin: 30px;
+background-color: #ffffff;
+border: 1px solid black;
+opacity: 0.1;
+filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.thanu
+{
+  opacity: 0.3;  
+  text-emphasis-color: back;
+}
+
+
+.page-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  background-color: rgb(2, 2, 2);
+  opacity: 0.7;
+  color: white;
+
+}
+
+.headmy {
+  padding: 5px;
+  background-color: rgb(2, 2, 2);
+  color: white;
+  opacity: 0.7;
+
+  width: 100%;
+
+  z-index: 1;
+}
+

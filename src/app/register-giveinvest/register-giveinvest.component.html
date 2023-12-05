@@ -1,0 +1,73 @@
+<div *ngIf="isSignedUp; else signupForm">
+    Your registration as Invester is successful.
+  </div>
+  
+  <ng-template #signupForm>
+  
+      <div class="row">
+          <div class="col-sm-5">
+            <h2>Please Register here for provide loan,</h2>
+            <br>
+  
+            
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+   <p>name: {{luser.name}}</p>
+      <p>name: {{luser.id}}</p>
+  
+        <div class="form-group">
+          <label for="name">Visible Name:</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+          <div *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.required">Name is required</div>
+          </div>
+        </div>
+
+        
+      <div class="form-group">
+        <label for="areas">Interest Fields:</label>
+        <input type="text" class="form-control" name="areas" [(ngModel)]="form.areas"  #areas="ngModel"
+          required />
+        <div *ngIf="f.submitted && areas.invalid">
+          <div *ngIf="areas.errors.required">Areas is required</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="minrate">Expected Minimum Profit Rate:</label>
+        <input type="text" class="form-control" name="minrate" [(ngModel)]="form.minrate"  #minrate="ngModel"
+          required />
+        <div *ngIf="f.submitted && minrate.invalid">
+          <div *ngIf="minrate.errors.required">Minrate is required</div>
+        </div>
+      </div>
+
+
+
+        
+      <div class="form-group">
+        <label for="about">About:</label>
+        <input type="text" class="form-control" name="about" [(ngModel)]="form.about"  #about="ngModel"
+          required />
+        <div *ngIf="f.submitted && about.invalid">
+          <div *ngIf="about.errors.required">About is required</div>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary">Register</button>
+          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+            Signup failed!<br/>{{errorMessage}}
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-7"><img src="\assets\32.jpg" alt="Notebook" height="500" width="100%" ></div>
+      </div>
+      
+  
+     
+  </ng-template>
+  
+  
+  

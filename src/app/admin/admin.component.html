@@ -1,0 +1,218 @@
+<div class="bgy"></div>
+<br><br>
+ <div align="center">
+<button class="mybutton"  (click)=showPopup()>View Users details </button>
+<button class="mybutton"  (click)=showePopup()>View Investers details </button>
+<button class="mybutton"  (click)=showdPopup()>View Investre details </button>
+</div>
+<br>
+<div align="center">
+<button class="mybutton"  (click)=showbPopup()>View Loan Providers details </button>
+<button class="mybutton"  (click)=showcPopup()>View Loan Receivers details </button>
+
+      <p>name: {{luser.name}}</p>
+      <p>name: {{luser.id}}</p>
+
+</div>
+
+
+<div *ngIf="show" class="modal-back">
+    <div class="modal-content">
+      <div class="modal-header"><h4>App Users details:</h4></div>
+      <div class="modal-body" align="center">
+          <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Name</th> 
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Role id</th>
+                <th>Role Name</th>
+                <th> Delete</th>
+              </tr>
+              </thead>
+            
+              <tbody>
+              <tr *ngFor="let cus of cuss">
+                <td>{{cus.id}}</td>
+                <td>{{cus.name}}</td>
+                <td>{{cus.username}}</td>
+                <td>{{cus.email}}</td>
+                <td>{{cus.roles[0].id}}</td>
+                <td>{{cus.roles[0].name}}</td>
+                <td><button class="button is-small" (click)='deleteCus(cus)'>Delete</button></td>
+              </tr>
+            </tbody>
+            </table>
+
+      
+            
+      </div>
+      <div class="modal-footer">      
+        <button class="btn btn-secondary"  (click)=closePopup()>Close now </button>
+      </div>
+
+
+   
+   
+    </div>
+</div>
+
+
+<div *ngIf="showb" class="modal-back">
+  <div class="modal-content">
+    <div class="modal-header"><h4>App Users details:</h4></div>
+    <div class="modal-body" align="center">
+       
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th> 
+            
+              <th> <button class="button is-small" (click)='delcus()'>Delete All Users</button></th>
+            </tr>
+            </thead>
+          
+            <tbody>
+            <tr *ngFor="let puser of pusers">
+              <td>{{puser.uid}}</td>
+              <td>{{puser.uname}}</td>
+            
+              <td><button class="button is-small" (click)='deleteCus(cus)'>Delete</button></td>
+            </tr>
+          </tbody>
+          </table>
+          
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closebPopup()>Close now </button>
+    </div>
+
+
+ 
+ 
+  </div>
+</div>
+
+
+<div *ngIf="showc" class="modal-back">
+  <div class="modal-content">
+    <div class="modal-header"><h4>App Users details:</h4></div>
+    <div class="modal-body" align="center">
+       
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th> 
+              <th>Email</th> 
+              <th> <button class="button is-small" (click)='delcus()'>Delete All Users</button></th>
+            </tr>
+            </thead>
+          
+            <tbody>
+            <tr *ngFor="let suser of susers">
+              <td>{{suser.uid}}</td>
+              <td>{{suser.uname}}</td>
+              <td>{{suser.email}}</td>
+
+            
+              <td><button class="button is-small" (click)='deleteCus(cus)'>Delete</button></td>
+            </tr>
+          </tbody>
+          </table>
+          
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closecPopup()>Close now </button>
+    </div>
+
+
+ 
+ 
+  </div>
+</div>
+
+
+<div *ngIf="showd" class="modal-back">
+  <div class="modal-content">
+    <div class="modal-header"><h4>App Users details:</h4></div>
+    <div class="modal-body" align="center">
+       
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th> 
+              <th>Email</th> 
+              <th> <button class="button is-small" (click)='delcus()'>Delete All Users</button></th>
+            </tr>
+            </thead>
+          
+            <tbody>
+            <tr *ngFor="let iruser of irusers">
+              <td>{{iruser.uid}}</td>
+              <td>{{iruser.uname}}</td>
+              <td>{{iruser.email}}</td>
+
+            
+              <td><button class="button is-small" (click)='deleteCus(cus)'>Delete</button></td>
+            </tr>
+          </tbody>
+          </table>
+          
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closedPopup()>Close now </button>
+    </div>
+
+
+ 
+ 
+  </div>
+</div>
+
+
+<div *ngIf="showe" class="modal-back">
+  <div class="modal-content">
+    <div class="modal-header"><h4>App Users details:</h4></div>
+    <div class="modal-body" align="center">
+       
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Name</th> 
+              <th>Email</th> 
+              <th> <button class="button is-small" (click)='delcus()'>Delete All Users</button></th>
+            </tr>
+            </thead>
+          
+            <tbody>
+            <tr *ngFor="let iguser of igusers">
+              <td>{{iguser.uid}}</td>
+              <td>{{iguser.uname}}</td>
+              <td>{{iguser.email}}</td>
+
+            
+              <td><button class="button is-small" (click)='deleteCus(cus)'>Delete</button></td>
+            </tr>
+          </tbody>
+          </table>
+          
+    </div>
+    <div class="modal-footer">      
+      <button class="btn btn-secondary"  (click)=closeePopup()>Close now </button>
+    </div>
+
+
+ 
+ 
+  </div>
+</div>

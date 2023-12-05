@@ -1,0 +1,594 @@
+<div class="bgy"></div>
+
+
+
+<div *ngIf="isLoggedIn; else loggedOut" >
+
+    <br><br><br>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+
+        <div class="col-sm-6 text-center">
+            <div class="divform"><h1>Welcome to Loan Providing Service</h1></div>
+        </div>
+    
+      </div>
+
+      <br><br>
+
+
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-left">
+            <div class="divform">
+   <h3>Your Details,</h3>
+    <p>User ID:{{puser.uid}}</p>
+    <p>User Name:{{puser.uname}}</p>
+    <p>Loan Provider ID: {{puser.id}}</p>
+    <p>Provider Name: {{puser.name}}</p>
+            </div></div></div>
+            <br><br>
+    
+<div *ngIf="show" class="modal-back">
+
+
+    <div class="modal-content">
+        <div class="modal-header"><h4>To Send Request</h4></div>
+        <div class="modal-body" >
+            
+            <div *ngIf="isSignedUp; else signupForm">
+                Your Request send successfully.
+              </div>
+              
+              <ng-template #signupForm>
+              
+                  <div class="row">
+                      <div class="col-sm-5">
+                        <h2>Please Fill this to send New loan Providing Request,</h2>
+                        <br>
+              
+                        
+                  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+                    <p> User ID:{{puser.uid}}</p>
+                    <p> User Name:{{puser.uname}}</p>
+                 
+                 
+              
+                    <div class="form-group">
+                      <label for="amount">Amount</label>
+                      <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" #name="ngModel" required />
+                      <div *ngIf="f.submitted && amount.invalid">
+                        <div *ngIf="amount.errors.required">Amount is required</div>
+                      </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <input type="text" class="form-control" name="duration" [(ngModel)]="form.duration" #name="ngModel" required />
+                            <div *ngIf="f.submitted && duration.invalid">
+                              <div *ngIf="duration.errors.required">Duration is required</div>
+                            </div>
+                          </div>
+                    
+                          
+                          <div class="form-group">
+                                <label for="rate">Rate</label>
+                                <input type="text" class="form-control" name="rate" [(ngModel)]="form.rate" #name="ngModel" required />
+                                <div *ngIf="f.submitted && rate.invalid">
+                                  <div *ngIf="rate.errors.required">Rate is required</div>
+                                </div>
+                              </div>
+                              
+
+                              <div class="form-group">
+                                    <label for="negotiation">Negotiation</label>
+                        
+                                        <select class="form-control" class="form-control" name="negotiation" [(ngModel)]="form.negotiation" #name="ngModel" required >
+                                          <option >You Can</option>
+                                          <option >You Can't</option>
+                                        </select>
+                      
+                                        <div *ngIf="f.submitted && negotiation.invalid">
+                                          <div *ngIf="negotiation.errors.required">negotiation is required</div>
+                                        </div>
+                                      </div>
+                                
+          
+                   
+                    <div class="form-group">
+                      <button class="btn btn-primary">Send Now</button>
+                      <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                        Signup failed!<br/>{{errorMessage}}
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-sm-7"><img src="\assets\34.jpg" alt="Notebook" height="100%" width="100%" ></div>
+                  </div>
+                  
+
+              
+                 
+              </ng-template>
+        </div>
+        <div class="modal-footer">      
+          <button class="btn btn-secondary"  (click)=closePopup()>Close now </button>
+        </div>
+  
+  
+     
+     
+      </div>
+
+
+
+
+</div>
+
+
+
+<div *ngIf="showl" class="modal-back">
+
+
+        <div class="modal-content">
+            <div class="modal-header"><h4>Manage Loan Providing Requests</h4></div>
+            <div class="modal-body" align="center">
+              
+    
+                  
+                    <div  class="alert"    *ngFor="let prequest of prequests">
+                        <div class="row">
+                            <div class="col" align="left"> <p>Request ID: {{prequest.id}}</p> </div>  
+                            <div class="col" align="left"> <p>Amount: {{prequest.amount}}</p> </div>  
+                            <div class="col" align="left"> <p>Duration: {{prequest.duration}}</p> </div>  
+                            <div class="col" align="left"> <p>Rate: {{prequest.rate}}</p> </div>  
+                            <div class="col" align="left"> <p>Negotiation: {{prequest.negotiation}}</p> </div>  
+                           
+                        </div>
+                        <div class="row">
+                            <div class="col" align="right"><button class="btn btn-primary" (click)=showcPopup() >Delete Request</button>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col" align="left"> <p>Request Posted Date: {{prequest.date}}</p> </div>  
+
+                        </div>
+                       
+                    </div>
+               
+               
+            </div>
+            <div class="modal-footer">      
+              <button class="btn btn-secondary"  (click)=closebPopup()>Close now </button>
+            </div>
+      
+      
+         
+         
+          </div>
+    
+    
+    
+    
+    </div>
+
+
+    <div *ngIf="showh" class="modal-back">
+
+
+        <div class="modal-content">
+            <div class="modal-header"><h4>To Send Request</h4></div>
+            <div class="modal-body" >
+                
+                <div *ngIf="isSignedUp; else signupForm">
+                    You successfully Accept the Request.
+                  </div>
+                  
+                  <ng-template #signupForm>
+                  
+                      <div class="row">
+                          <div class="col-sm-5">
+                            <h2>Please Fill this to send New loan Getting Request,</h2>
+                            <br>
+                  
+                            
+                      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    
+                        <p> User ID:{{suser.uid}}</p>
+                        <p> User Name:{{suser.uname}}</p>
+                     
+                     
+                  
+                        <div class="form-group">
+                          <label for="amount">Amount</label>
+                          <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" #name="ngModel" required />
+                          <div *ngIf="f.submitted && amount.invalid">
+                            <div *ngIf="amount.errors.required">Amount is required</div>
+                          </div>
+                        </div>
+                        
+    
+                        <div class="form-group">
+                                <label for="duration">Duration</label>
+                                <input type="text" class="form-control" name="duration" [(ngModel)]="form.duration" #name="ngModel" required />
+                                <div *ngIf="f.submitted && duration.invalid">
+                                  <div *ngIf="duration.errors.required">Duration is required</div>
+                                </div>
+                              </div>
+                        
+                              
+                              <div class="form-group">
+                                    <label for="rate">Rate</label>
+                                    <input type="text" class="form-control" name="rate" [(ngModel)]="form.rate" #name="ngModel" required />
+                                    <div *ngIf="f.submitted && rate.invalid">
+                                      <div *ngIf="rate.errors.required">Rate is required</div>
+                                    </div>
+                                  </div>
+                                  
+    
+                                  <div class="form-group">
+                                        <label for="negotiation">Negotiation</label>
+                            
+                                            <select class="form-control" class="form-control" name="negotiation" [(ngModel)]="form.negotiation" #name="ngModel" required >
+                                              <option >You Can</option>
+                                              <option >You Can't</option>
+                                            </select>
+                          
+                                            <div *ngIf="f.submitted && negotiation.invalid">
+                                              <div *ngIf="negotiation.errors.required">negotiation is required</div>
+                                            </div>
+                                          </div>
+                                    
+              
+                       
+                        <div class="form-group">
+                          <button class="btn btn-primary">Send Now</button>
+                          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                            Signup failed!<br/>{{errorMessage}}
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-sm-7"><img src="\assets\34.jpg" alt="Notebook" height="100%" width="100%" ></div>
+                      </div>
+                      
+    
+                  
+                     
+                  </ng-template>
+            </div>
+            <div class="modal-footer">      
+              <button class="btn btn-secondary"  (click)=closehPopup()>Close now </button>
+            </div>
+      
+      
+         
+         
+          </div>
+    
+    
+    
+    
+    </div>
+    
+    
+    <div *ngIf="showb" class="modal-back">
+    
+    
+            <div class="modal-content">
+                <div class="modal-header"><h4>View Loan Providing Requests</h4></div>
+                <div class="modal-body" align="center">
+                  
+        
+                      
+                        <div  class="alert"    *ngFor="let prequest of prequests">
+                            <div class="row">
+                                <div class="col" align="left"> <p>Request ID: {{prequest.id}}</p> </div>  
+                                <div class="col" align="left"> <p>Request Send By: {{prequest.uname}}</p> </div>  
+                                <div class="col" align="left"> <p>Amount: {{prequest.amount}}</p> </div>  
+                                <div class="col" align="left"> <p>Duration: {{prequest.duration}}</p> </div>  
+                                <div class="col" align="left"> <p>Rate: {{prequest.rate}}</p> </div>  
+                                <div class="col" align="left"> <p>Negotiation: {{prequest.negotiation}}</p> </div>  
+                               
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col" align="left"> <p>Request Posted Date: {{prequest.date}}</p> </div>  
+    
+                            </div>
+                           
+                        </div>
+                   
+                   
+                </div>
+                <div class="modal-footer">      
+                  <button class="btn btn-secondary"  (click)=closebPopup()>Close now </button>
+                </div>
+          
+          
+             
+             
+              </div>
+        
+        
+        
+        
+    </div>
+    
+    <div *ngIf="showd" class="modal-back">
+    
+    
+          <div class="modal-content">
+              <div class="modal-header"><h4>Manage Loan Providing Requests</h4></div>
+              <div class="modal-body" align="center">
+                
+      
+                    
+                      <div  class="alert"    *ngFor="let purequest of purequests">
+                          <div class="row">
+                              <div class="col" align="left"> <p>Request ID: {{purequest.id}}</p> </div>  
+                              <div class="col" align="left"> <p>Request Send By: {{purequest.uname}}</p> </div>  
+                              <div class="col" align="left"> <p>Amount: {{purequest.amount}}</p> </div>  
+                              <div class="col" align="left"> <p>Duration: {{purequest.duration}}</p> </div>  
+                              <div class="col" align="left"> <p>Rate: {{purequest.rate}}</p> </div>  
+                              <div class="col" align="left"> <p>Negotiation: {{purequest.negotiation}}</p> </div>  
+                             
+                          </div>
+                          <div class="row">
+                              <div class="col" align="right"><button class="btn btn-primary" (click)=deletePreqbyId(purequest) >Delete Request</button>
+                              </div> 
+                          </div>
+                          <div class="row">
+                              <div class="col" align="left"> <p>Request Posted Date: {{purequest.date}}</p> </div>  
+    
+                          </div>
+                         
+                      </div>
+                 
+                 
+              </div>
+              <div class="modal-footer">      
+                <button class="btn btn-secondary"  (click)=closedPopup()>Close now </button>
+              </div>
+        
+        
+           
+           
+            </div>
+      
+      
+      
+      
+    </div>
+    
+    <div *ngIf="showc" class="modal-back">
+    
+    
+          <div class="modal-content">
+              <div class="modal-header"><h4>View Loan Seekers Requests</h4></div>
+              <div class="modal-body" align="center">
+                
+      
+                    
+                      <div  class="alert"    *ngFor="let srequest of srequests">
+                          <div class="row">
+                              <div class="col" align="left"> <p>Request ID: {{srequest.id}}</p> </div>  
+                              <div class="col" align="left"> <p>Request Send By: {{srequest.uname}}</p> </div>  
+                              <div class="col" align="left"> <p>Amount: {{srequest.amount}}</p> </div>  
+                              <div class="col" align="left"> <p>Duration: {{srequest.duration}}</p> </div>  
+                              <div class="col" align="left"> <p>Rate: {{srequest.rate}}</p> </div>  
+                              <div class="col" align="left"> <p>Negotiation: {{srequest.negotiation}}</p> </div>  
+                             
+                          </div>
+                          <div class="row">
+                              <div class="col" align="right"><button class="btn btn-primary" (click)=CalLoan(srequest) >View Request</button>
+                              </div> 
+                          </div>
+                          <div class="row">
+                              <div class="col" align="left"> <p>Request Posted Date: {{srequest.date}} </p> </div>  
+                              
+                          </div>
+                         
+                      </div>
+                 
+                 
+              </div>
+              <div class="modal-footer">      
+                <button class="btn btn-secondary"  (click)=closecPopup()>Close now </button>
+    
+              </div>
+        
+        
+           
+           
+            </div>
+      
+      
+      
+      
+    </div>
+    
+    <div *ngIf="showf" class="modal-back">
+    
+    
+        <div class="modal-content">
+            <div class="modal-header"><h4>View Loan Providing Requests</h4></div>
+            <div class="modal-body" align="center">
+              
+    
+                  
+                    <div  >
+                      
+                        <br><br><br>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 alert1" align="center"> <h4>Request ID: {{id}}</h4> </div> 
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-4 alert1" align="center"> <h4>User Name: {{uname}}</h4> </div>  
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-2 alert1" align="center"> <h4>Rate: {{rate}}</h4> </div>  
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-3 alert1" align="center"> <h3>Total Loan Payable</h3><h3>{{(amount*duration*rate/1200)+amount}}</h3> </div>  
+                            <div class="col-sm-1" align="center"><P></P><h3>=</h3></div>
+                            <div class="col-sm-2 alert1" align="center"> <h3>Total Amount </h3><h3>{{amount}}</h3> </div>  
+                            <div class="col-sm-1"><P></P><h3>+</h3></div>
+                            <div class="col-sm-3 alert1" align="center"> <h3>Total Interest<h3></h3>{{(amount*duration*rate/1200)}}</h3> </div>  
+                        </div>    
+                        <br><br>                
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                        <div class="col-sm-8 alert1" align="center"> <h3>Monthly Installment: {{(amount*rate/1200)+amount/duration}}</h3> </div>  
+                        <div class="col-sm-2"></div>
+                      </div>
+                      <br><br>   
+    
+                        <div class="row">
+                            <div class="col">
+                          <div  align="right"><ng-template #showAccept><button class="mybutton"  (click)=onSubmitAccept() >Accept Request</button></ng-template><div *ngIf="condition1; else showAccept" ><button class="mybutton" (click)=showfPopup() (click)=onSubmitstatusr()>Reject Request</button></div>
+                         </div> 
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+               
+               
+            </div>
+            <div class="modal-footer">      
+              <button class="btn btn-secondary"  (click)=closefPopup()>Close now </button>
+            </div>
+      
+      
+         
+         
+          </div>
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    <div *ngIf="showg" class="modal-back">
+    
+    
+      <div class="modal-content">
+          <div class="modal-header"><h4>Requests Status</h4></div>
+          <div class="modal-body" align="center">
+           
+    
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Your Status ID</th>
+                <th>Request ID</th>
+                <th>Sender Username</th> 
+                <th>Your Request Status</th> 
+              </tr>
+              </thead>
+            
+              <tbody>
+              <tr *ngFor="let srequestbyruname of srequestbyrunames">
+                <td>{{srequestbyruname.id}}</td>
+                <td>{{srequestbyruname.reqid}}</td>
+                <td>{{srequestbyruname.suname}}</td>
+                <td>{{srequestbyruname.senderstatus}}</td>
+              
+              </tr>
+            </tbody>
+            </table>
+            
+      </div>
+          <div class="modal-footer">      
+            <button class="btn btn-secondary"  (click)=closegPopup()>Close now </button>
+          </div>
+    
+    
+       
+       
+        </div>
+    
+    
+    
+    
+    </div>
+
+
+
+
+
+    <div align="center">
+      <button class="mybutton"  (click)=showPopup()>Send New Request </button>
+      <button class="mybutton"  (click)=showbPopup()>View Others Requests</button>
+      <button class="mybutton" (click)=showdPopup()>Manage Requests </button>
+      <button class="mybutton"  (click)=showcPopup()>View Loan Seekers Requests</button>
+      <button class="mybutton" (click)=showgPopup()>View Requests Status</button>
+  
+      </div>
+
+</div>
+
+
+<ng-template #loggedOut>
+    <br><br><br><br>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center">
+            <div class="divform">
+                <br>
+                <h1>Welcome to Provide Loan Service</h1>
+                <br><br>
+                <p> Please Register for this Service to use...</p>
+                <br><br>
+<button class="btn btn-primary" (click)=showmPopup()>Register For Loan Providing</button>
+<br><br>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+      <div *ngIf="showm" class="modal-back">
+    
+    
+        <div class="modal-content">
+            <div class="modal-header"><h4> Registration For Loan Providing </h4></div>
+            <div class="modal-body" align="left">
+              
+    
+                  
+              <app-register-ploan></app-register-ploan>
+
+               
+               
+            </div>
+            <div class="modal-footer">      
+              <button class="btn btn-secondary"  (click)=closemPopup()>Close now </button>
+            </div>
+      
+      
+         
+         
+          </div>
+    
+    
+    
+    
+    </div>
+    
+</ng-template>
+
+
+
+
+    
+

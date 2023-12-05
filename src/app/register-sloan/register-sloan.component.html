@@ -1,0 +1,129 @@
+<div *ngIf="isSignedUp; else signupForm">
+    Your registration as loan Recevier is successful.
+  </div>
+  
+  <ng-template #signupForm>
+  
+      <div class="row">
+          
+            <h2>Please Register here for get a loan,</h2>
+            <br>
+            <div class="col-sm-12"> 
+    
+  
+            
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="row">  
+        <div class="col-sm-6"> 
+            
+      <p>Id: {{luser.id}}</p>
+      <p>Name: {{luser.name}}</p>
+  
+        <div class="form-group">
+          <label for="name">Visible Name: </label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+          <div *ngIf="f.submitted && name.invalid">
+            <div *ngIf="name.errors.required">Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="yearsofoccupation">Years of occupation:</label>
+            <input type="text" class="form-control" name="yearsofoccupation" [(ngModel)]="form.yearsofoccupation"  #yearsofoccupation="ngModel"
+              required />
+            <div *ngIf="f.submitted && yearsofoccupation.invalid">
+              <div *ngIf="yearsofoccupation.errors.required">Yearsofoccupation is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="salary">Salary:</label>
+              <input type="text" class="form-control" name="salary" [(ngModel)]="form.salary"  #salary="ngModel"
+                required />
+              <div *ngIf="f.submitted && salary.invalid">
+                <div *ngIf="salary.errors.required">Salary is required</div>
+              </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="gname">Guarantee Name:</label>
+                <input type="text" class="form-control" name="gname" [(ngModel)]="form.gname"  #gname="ngModel"
+                  required />
+                <div *ngIf="f.submitted && gname.invalid">
+                  <div *ngIf="gname.errors.required">Gname is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="gnic">Guarantee NIC No:</label>
+                  <input type="text" class="form-control" name="gnic" [(ngModel)]="form.gnic"  #gnic="ngModel"
+                    required />
+                  <div *ngIf="f.submitted && gnic.invalid">
+                    <div *ngIf="gnic.errors.required">Gnic is required</div>
+                  </div>
+                </div>
+              
+              
+              </div> 
+              
+              <div class="col-sm-6">
+        <div class="form-group">
+          <label for="gphonenumber">Guarantee Phonenumber:</label>
+          <input type="text" class="form-control" name="gphonenumber" [(ngModel)]="form.gphonenumber"  #gphonenumber="ngModel"
+            required />
+          <div *ngIf="f.submitted && gphonenumber.invalid">
+            <div *ngIf="gphonenumber.errors.required">Gphonenumber is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gjob">Guarantee Job:</label>
+            <input type="text" class="form-control" name="gjob" [(ngModel)]="form.gjob"  #gjob="ngModel"
+              required />
+            <div *ngIf="f.submitted && gjob.invalid">
+              <div *ngIf="gjob.errors.required">Gjob is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="grelationship ">Guarantee Relationship:</label>
+              <input type="text" class="form-control" name="grelationship " [(ngModel)]="form.grelationship "  #grelationship ="ngModel"
+                required />
+              <div *ngIf="f.submitted && grelationship .invalid">
+                <div *ngIf="grelationship .errors.required">Grelationship  is required</div>
+              </div>
+            </div>
+    
+      
+
+        
+        <div class="form-group">
+          <button class="btn btn-primary">Register</button>
+          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+            Signup failed!<br/>{{errorMessage}}
+          </div>
+        </div>
+
+
+      
+      
+              </div>  
+          </div>
+      
+      </form>
+
+            </div>
+    
+
+    
+     
+  
+  
+  </div>
+      
+  
+     
+  </ng-template>
+  
+  
+  
